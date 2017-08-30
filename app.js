@@ -1,27 +1,35 @@
-const models = require('./models');
+const express = require('express'),
+      mustacheExpress = require('mustache-express'),
+      bodyParser = require('body-parser'),
+      sequelize = require('sequelize')
+      models = require("./models");
 
-function createUser(){
-  const user = models.User.build({
-    name:'Hans Von Houston',
-    email:'houston@sprockets.com ',
-    bio:'tanzer'
-  });
+const app = express();
 
-user.save().then(function(newUser){
-  console.log(newUser.dataValues);
+app.engine('mustache', mustacheExpress());
+app.set('views', './views');
+app.set('view engine', 'mustache')
+
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+app.get('/', function(req, res) {
+    res.render("index");
 })
-}
 
+app.listen(3000, function() {
+    console.log('Express running on http://localhost:3000/.')
+});
 
-createUser();
+process.on('SIGINT', function() {
+  console.log("\nshutting down");
+  const index = require('./models/index')
+  index.sequelize.close()
 
-function listUsers() {
-
-models.User.findAll().then(function (users) {
-  users.forEach(function(user){
-    console.log(user.dataValues);
-  })
-})
-}
-
-listUsers();
+ // give it a second
+  setTimeout(function() {
+    console.log('process exit');
+    process.exit(0);
+  }, 1000)
+});
