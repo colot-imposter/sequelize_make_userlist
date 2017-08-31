@@ -6,12 +6,23 @@
   </head>
   <body>
     <h1>HEYO HANS IN THE HAUSE!</h1>
-      see all <a href="/users">users</a>
-
+      add a <a href="/user">user</a>
+      <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Bio</th>
+      </tr>
       {{#userskey}}
-      {{dataValues.name}}
-      {{dataValues.email}}
-      {{dataValues.bio}}
+      <tr>
+      <td>{{dataValues.name}}</td>
+      <td>{{dataValues.email}}</td>
+      <td>{{dataValues.bio}}</td>
+      <td> <form action="/delete_user/{{id}}" method="post">
+        <button type="submit">Delete</button>
+      </form></td>
+      </tr>
       {{/userskey}}
+      </table>
   </body>
 </html>
