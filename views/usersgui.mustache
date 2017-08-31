@@ -2,19 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="../public/style/style.css">
+    <title>Hans Users</title>
   </head>
   <body>
-    <h1>HEYO HANS IN THE HAUSE!</h1>
+    <h1>Alles Hans!</h1>
+
+    <div class="adduserbutton">
       add a <a href="/user">user</a>
+    </div>
+
       <table>
       <tr>
+        <th>Hans</th>
         <th>Name</th>
         <th>Email</th>
         <th>Bio</th>
       </tr>
       {{#userskey}}
       <tr>
+      <td><img src="../public/photos/giphy.gif" alt="german-dancing like carlton from fresh house, but better"></td>
       <td><a href='/update_user/{{dataValues.id}}'>{{dataValues.name}}</a></td>
       <td>{{dataValues.email}}</td>
       <td>{{dataValues.bio}}</td>

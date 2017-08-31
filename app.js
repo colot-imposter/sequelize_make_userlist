@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+app.use('/public', express.static('public'));
+
 app.get('/', function(req, res) {
   res.render("index");
 })
@@ -66,6 +68,7 @@ app.get('/update_user/:id', function(req, res) {
       id: req.params.id
     }
   }).then(function(user) {
+    console.log("poooooooooo",user);
     res.render('updatefrom', {
       name: user.name,
       email: user.email,
