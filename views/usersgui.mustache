@@ -15,7 +15,7 @@
       </tr>
       {{#userskey}}
       <tr>
-      <td>{{dataValues.name}}</td>
+      <td><a href='/update_user/{{dataValues.id}}'>{{dataValues.name}}</a></td>
       <td>{{dataValues.email}}</td>
       <td>{{dataValues.bio}}</td>
       <td> <form action="/delete_user/{{id}}" method="post">

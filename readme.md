@@ -10,3 +10,11 @@ Delete
 1c. we need to pass the id of the user when we post so that we can uniquely identify
 
 2a. we need a route for this post that deletes the user and then shows the list of users
+
+Update
+
+1.create link to form
+
+2. create mustache form
+
+3.need route for this post that updates the user and then shows the list of users
